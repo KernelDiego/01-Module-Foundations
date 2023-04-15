@@ -1,25 +1,31 @@
-"use strict";
+'use strict'
 
 function BinarioADecimal(num) {
-  var suma = 0;
-  var posicion = 0;
-  for (let i = num.length - 1; i >= 0; i--) {
-    suma = suma + num[i] *2 ** posicion; 
-    posicion++;
-  }
-  return suma;
+  return num
+    .split('')
+    .reverse()
+    .map((e, i) => e * Math.pow(2, i))
+    .reduce((a, b) => a + b)
 }
 
 function DecimalABinario(num) {
-  var resultado = "";
-  while(num !== 0){
-    resultado = num % 2 + resultado;
-    num = Math.floor(num/2);
+  //   let array = [], div = num
+  //   while(div > 0) {
+  //     if (div % 2 === 0) array.push(0)
+  //     else array.push(1)
+  //     div = Math.floor(div / 2)
+  //   }
+  //   return array.reverse().join('')
+
+  let binary = ''
+  while (num > 0) {
+    binary = (num % 2).toString() + binary
+    num = Math.floor(num / 2)
   }
-  return resultado;
+  return binary
 }
 
 module.exports = {
   BinarioADecimal,
   DecimalABinario,
-};
+}
